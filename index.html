@@ -1,0 +1,2693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vein Glory Society - Sacred Tenets</title>
+    <!-- html2canvas for quote card image generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar for pages */
+        .page::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .page::-webkit-scrollbar-track {
+            background: rgba(139, 111, 71, 0.1);
+            border-radius: 4px;
+        }
+
+        .page::-webkit-scrollbar-thumb {
+            background: rgba(139, 111, 71, 0.4);
+            border-radius: 4px;
+        }
+
+        .page::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 111, 71, 0.6);
+        }
+        
+        .book-container {
+            perspective: 2000px;
+            position: relative;
+        }
+        
+        .book {
+            width: 900px;
+            height: 85vh;
+            max-height: 900px;
+            position: relative;
+            transform-style: preserve-3d;
+            background: #f4e8d0;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(212, 175, 55, 0.1),
+                inset 0 0 40px rgba(92, 64, 40, 0.2);
+            border-radius: 10px;
+            border: 4px solid #8b6f47;
+            transition: transform 0.3s ease;
+        }
+        
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.9),
+                0 0 50px rgba(212, 175, 55, 0.15),
+                inset 0 0 40px rgba(92, 64, 40, 0.2);
+        }
+
+        /* Page Curl Effect - Top Right Corner */
+        .book::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 50px 50px 0 0;
+            border-color: #8b6f47 transparent transparent transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 10px 0 0;
+            box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .book:hover::after {
+            border-width: 100px 100px 0 0;
+            opacity: 1;
+            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Page Curl Effect - Top Left Corner */
+        .book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 50px 0 0 50px;
+            border-color: #8b6f47 transparent transparent transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px 0 0 0;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .book:hover::before {
+            border-width: 100px 0 0 100px;
+            opacity: 1;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #f4e8d0 !important;
+            background:
+                /* Parchment texture overlay */
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 111, 71, 0.015) 2px,
+                    rgba(139, 111, 71, 0.015) 4px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 111, 71, 0.015) 2px,
+                    rgba(139, 111, 71, 0.015) 4px
+                ),
+                /* Aged spots */
+                radial-gradient(ellipse at 20% 30%, rgba(139, 111, 71, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(139, 111, 71, 0.02) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(139, 111, 71, 0.025) 0%, transparent 50%),
+                /* Ruled lines */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(139, 111, 71, 0.03) 29px,
+                    rgba(139, 111, 71, 0.03) 30px
+                ),
+                /* Base gradient */
+                linear-gradient(to bottom, #f9f3e8 0%, #f4e8d0 100%) !important;
+            padding: 80px 90px 80px 90px;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-radius: 10px;
+            box-shadow: inset 0 0 50px rgba(92, 64, 40, 0.1);
+            opacity: 0;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .page.active {
+            display: flex;
+            opacity: 1;
+            z-index: 10;
+            animation: pageFade 0.8s ease-in-out;
+        }
+
+        @keyframes pageFade {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 35px;
+            left: 90px;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #6b5437;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cover-page {
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%) !important;
+            background-color: #3d2817 !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #d4af37;
+            border: 4px solid #8b6f47;
+            padding: 60px 90px 200px 90px !important;
+        }
+        
+        .cover-page h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 52px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+            letter-spacing: 5px;
+            line-height: 1.3;
+        }
+
+        .cover-page .subtitle {
+            font-size: 26px;
+            font-style: italic;
+            text-align: center;
+            color: #c9a961;
+            margin-bottom: 50px;
+            letter-spacing: 2.5px;
+        }
+        
+        .cover-ornament {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 20px 0;
+        }
+        
+        .logo-container {
+            width: 180px;
+            height: 180px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+        
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-container:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9));
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9));
+            }
+        }
+        
+        .logo-header {
+            position: absolute;
+            top: 20px;
+            left: 80px;
+            width: 60px;
+            height: 60px;
+            opacity: 0.3;
+        }
+        
+        .logo-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.5);
+        }
+        
+        .tenet-header {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: #2c1810;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 3px solid #8b6f47;
+            padding-bottom: 20px;
+            letter-spacing: 1.5px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .tenet-header::after {
+            content: '◆';
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4af37;
+            background: #f4e8d0;
+            padding: 0 10px;
+            font-size: 20px;
+        }
+        
+        .tenet-number {
+            color: #d4af37;
+            font-size: 36px;
+            margin-right: 12px;
+            font-weight: 700;
+        }
+
+        .tenet-content {
+            font-size: 20px;
+            line-height: 2;
+            color: #2c1810;
+            text-align: justify;
+            margin-bottom: 30px;
+            font-weight: 500;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .tenet-elaboration {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #3a2817;
+            text-align: justify;
+            font-style: italic;
+            padding: 25px;
+            background: rgba(212, 175, 55, 0.12);
+            border-left: 4px solid #d4af37;
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            font-weight: 500;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 8px rgba(139, 111, 71, 0.1);
+            position: relative;
+        }
+
+        .tenet-elaboration::before {
+            content: '❦';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 24px;
+            color: #d4af37;
+            background: #f4e8d0;
+            padding: 0 10px;
+        }
+        
+        .drop-cap {
+            float: left;
+            font-size: 80px;
+            line-height: 70px;
+            padding-right: 15px;
+            padding-top: 5px;
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+            filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.4));
+        }
+        
+        .navigation {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+            pointer-events: none;
+            padding: 0 30px;
+        }
+
+        .navigation .nav-btn {
+            pointer-events: auto;
+        }
+
+        /* Menu Button */
+        .menu-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 3px solid #8b6f47;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-btn:hover {
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+            border-color: #d4af37;
+        }
+
+        .menu-btn span {
+            width: 30px;
+            height: 3px;
+            background: #d4af37;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 15, 10, 0.95);
+            z-index: 1500;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .menu-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Menu Content */
+        .menu-content {
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 4px solid #8b6f47;
+            border-radius: 12px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .menu-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .menu-content::-webkit-scrollbar-track {
+            background: rgba(139, 111, 71, 0.1);
+            border-radius: 4px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.4);
+            border-radius: 4px;
+        }
+
+        .menu-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 175, 55, 0.6);
+        }
+
+        .menu-title {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-item {
+            font-family: 'Cinzel', serif;
+            padding: 18px 25px;
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            border: 2px solid rgba(139, 111, 71, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: left;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: #ffd700;
+            border-color: #d4af37;
+            transform: translateX(10px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-item.active-page {
+            background: rgba(212, 175, 55, 0.25);
+            border-color: #d4af37;
+            color: #ffd700;
+        }
+
+        .menu-item-number {
+            display: inline-block;
+            width: 35px;
+            color: #c9a961;
+            font-weight: 700;
+        }
+
+        /* Entry Ritual Overlay */
+        .entry-ritual {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a0f0a 0%, #2c1810 100%);
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .entry-ritual.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .seal-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 40px;
+        }
+
+        .wax-seal {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #2a2a2a 0%, #191919 70%, #0a0a0a 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.8),
+                inset 0 -5px 20px rgba(0, 0, 0, 0.5),
+                inset 0 5px 20px rgba(42, 42, 42, 0.3);
+            animation: sealPulse 2s ease-in-out infinite;
+        }
+
+        .seal-emblem {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: auto;
+            max-height: 60%;
+            opacity: 0.9;
+            object-fit: contain;
+        }
+
+        .seal-cracks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .seal-container.breaking .seal-cracks {
+            animation: cracksAppear 1.5s ease-out forwards;
+        }
+
+        .crack {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.6);
+            transform-origin: center;
+        }
+
+        .crack1 {
+            top: 50%;
+            left: 20%;
+            width: 2px;
+            height: 60%;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+
+        .crack2 {
+            top: 50%;
+            right: 20%;
+            width: 2px;
+            height: 60%;
+            transform: translateY(-50%) rotate(15deg);
+        }
+
+        .crack3 {
+            top: 30%;
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            transform: translateX(-50%);
+        }
+
+        @keyframes cracksAppear {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .seal-container.breaking .wax-seal {
+            animation: sealBreak 1.5s ease-out forwards;
+        }
+
+        @keyframes sealBreak {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .welcome-text {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            color: #d4af37;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInText 2s ease-in 1.5s forwards;
+        }
+
+        .initiate-text {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            color: #c9a961;
+            text-align: center;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInText 2s ease-in 2s forwards;
+        }
+
+        @keyframes fadeInText {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .continue-btn {
+            margin-top: 50px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            color: #d4af37;
+            border: 3px solid #8b6f47;
+            border-radius: 6px;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInText 2s ease-in 2.5s forwards;
+            transition: all 0.3s ease;
+        }
+
+        .continue-btn:hover {
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+            color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Quote Extraction System */
+        .page ::selection {
+            background: rgba(212, 175, 55, 0.3);
+            color: #2c1810;
+        }
+
+        .share-quote-btn {
+            position: fixed;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            color: #d4af37;
+            border: 2px solid #8b6f47;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1100;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .share-quote-btn:hover {
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .quote-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 15, 10, 0.95);
+            z-index: 2500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .quote-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .quote-card-container {
+            position: relative;
+            max-width: 600px;
+            width: 90%;
+            z-index: 1;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 4px solid #8b6f47;
+            border-radius: 12px;
+            padding: 50px 40px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .quote-card-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            opacity: 0.7;
+        }
+
+        .quote-card-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .quote-card-text {
+            font-family: 'EB Garamond', serif;
+            font-size: 22px;
+            color: #d4af37;
+            text-align: center;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .quote-card-attribution {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: #c9a961;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .quote-card-ornament {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 20px auto;
+        }
+
+        .quote-modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .quote-modal-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            color: #d4af37;
+            border: 2px solid #8b6f47;
+            border-radius: 6px;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .quote-modal-btn:hover {
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+            color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 3px solid #8b6f47;
+            border-radius: 50%;
+            color: #d4af37;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .close-modal-btn:hover {
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+            color: #ffd700;
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            color: #c9a961;
+            background: rgba(61, 40, 23, 0.9);
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 111, 71, 0.5);
+            letter-spacing: 1px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Bookmark Button (Fixed) */
+        .bookmark-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 3px solid #8b6f47;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #d4af37;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .bookmark-btn:hover {
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+            border-color: #d4af37;
+        }
+
+        .bookmark-btn.bookmarked {
+            color: #ffd700;
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+        }
+
+        /* How to Use Button */
+        .how-to-use-btn {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 3px solid #8b6f47;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #d4af37;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .how-to-use-btn:hover {
+            background: linear-gradient(135deg, #4d3527 0%, #3a2820 100%);
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+            border-color: #d4af37;
+        }
+
+        /* How to Use Modal */
+        .how-to-use-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 15, 10, 0.95);
+            z-index: 2500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .how-to-use-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .how-to-use-content {
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 4px solid #8b6f47;
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .how-to-use-title {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .how-to-use-section {
+            margin-bottom: 25px;
+        }
+
+        .how-to-use-section h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: #d4af37;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .how-to-use-section p {
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            color: #c9a961;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .how-to-use-section ul {
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            color: #c9a961;
+            line-height: 1.8;
+            margin-left: 20px;
+            list-style: none;
+        }
+
+        .how-to-use-section ul li::before {
+            content: '◆';
+            color: #d4af37;
+            margin-right: 10px;
+        }
+
+        .website-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(139, 111, 71, 0.5);
+        }
+
+        .website-link a {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #d4af37;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .website-link a:hover {
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Bookmarks List Modal */
+        .bookmarks-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 15, 10, 0.95);
+            z-index: 2500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bookmarks-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .bookmarks-content {
+            width: 90%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #3d2817 0%, #2a1810 100%);
+            border: 4px solid #8b6f47;
+            border-radius: 12px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .bookmarks-title {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .bookmarks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bookmark-item {
+            font-family: 'Cinzel', serif;
+            padding: 15px 20px;
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            border: 2px solid rgba(139, 111, 71, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bookmark-item:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: #ffd700;
+            border-color: #d4af37;
+            transform: translateX(10px);
+        }
+
+        .bookmark-remove {
+            background: none;
+            border: none;
+            color: #c9a961;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .bookmark-remove:hover {
+            color: #ff6b6b;
+        }
+
+        .no-bookmarks {
+            font-family: 'EB Garamond', serif;
+            font-size: 18px;
+            color: #c9a961;
+            text-align: center;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+
+        /* Page Bookmark Button (on each page) */
+        .page-bookmark-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #d4af37;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+
+        .page-bookmark-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+            transform: scale(1.1);
+        }
+
+        .page-bookmark-btn.bookmarked {
+            background: rgba(212, 175, 55, 0.4);
+            color: #ffd700;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a0f0a 0%, #2c1810 100%);
+            z-index: 5000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 40px;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .loading-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.8));
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .loading-text {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: #d4af37;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .loading-dots {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #c9a961;
+            letter-spacing: 2px;
+        }
+
+        .loading-dots::after {
+            content: '...';
+            animation: loadingDots 1.5s infinite;
+        }
+
+        @keyframes loadingDots {
+            0%, 20% {
+                content: '.';
+            }
+            40% {
+                content: '..';
+            }
+            60%, 100% {
+                content: '...';
+            }
+        }
+
+        .nav-btn {
+            font-family: 'Cinzel', serif;
+            padding: 60px 12px;
+            background: transparent;
+            color: #191919;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0px;
+            text-transform: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: none;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            opacity: 0.6;
+        }
+
+        .nav-btn:hover {
+            opacity: 1;
+            background: linear-gradient(135deg, rgba(61, 40, 23, 0.95) 0%, rgba(42, 24, 16, 0.95) 100%);
+            border: 2px solid #8b6f47;
+            color: #d4af37;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+            transform: scale(1.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: top 0.5s ease;
+        }
+
+        .nav-btn:hover::before {
+            top: 100%;
+        }
+        
+        .nav-btn:active:not(:disabled) {
+            transform: scale(1.02);
+            box-shadow: 0 3px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Light mode for buttons on dark cover pages */
+        .nav-btn.light-mode {
+            color: #d4af37;
+            opacity: 0.7;
+        }
+
+        .nav-btn.light-mode:hover {
+            color: #ffd700;
+            opacity: 1;
+        }
+        
+        .page-indicator-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            color: #c9a961;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            background: rgba(61, 40, 23, 0.9);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid rgba(139, 111, 71, 0.5);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-indicator-top:hover {
+            background: rgba(77, 53, 39, 0.95);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+            border-color: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        .page-indicator-inline {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            color: #8b6f47;
+            font-weight: 600;
+            text-align: right;
+            margin-bottom: 15px;
+            opacity: 0.6;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        
+        .seal {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(139, 111, 71, 0.5) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: #2c1810;
+            font-weight: 700;
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 0 20px rgba(212, 175, 55, 0.2);
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            padding: 8px;
+            animation: sealPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes sealPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 4px 12px rgba(0, 0, 0, 0.3),
+                    inset 0 0 20px rgba(212, 175, 55, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 6px 18px rgba(212, 175, 55, 0.4),
+                    inset 0 0 25px rgba(212, 175, 55, 0.3);
+            }
+        }
+        
+        @media (max-width: 950px) {
+            .book {
+                width: 95vw;
+                height: auto;
+                min-height: 85vh;
+            }
+
+            .page {
+                padding: 60px 40px 60px 40px;
+            }
+
+            .cover-page {
+                padding: 30px 40px 180px 40px !important;
+            }
+
+            .tenet-header {
+                font-size: 26px;
+                margin-bottom: 25px;
+                padding-bottom: 15px;
+            }
+
+            .tenet-number {
+                font-size: 30px;
+            }
+
+            .tenet-content {
+                font-size: 18px;
+                line-height: 1.9;
+                margin-bottom: 25px;
+            }
+
+            .tenet-elaboration {
+                font-size: 16px;
+                line-height: 1.8;
+                padding: 20px;
+            }
+
+            .drop-cap {
+                font-size: 64px;
+                line-height: 56px;
+                padding-right: 12px;
+            }
+
+            .cover-page h1 {
+                font-size: 38px;
+                letter-spacing: 3px;
+            }
+
+            .cover-page .subtitle {
+                font-size: 20px;
+                letter-spacing: 1.5px;
+            }
+
+            .logo-container {
+                width: 140px;
+                height: 140px;
+            }
+
+            .logo-header {
+                width: 50px;
+                height: 50px;
+                top: 15px;
+                left: 40px;
+            }
+
+            .page-indicator {
+                top: 25px;
+                right: 40px;
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .page-number {
+                bottom: 30px;
+                left: 40px;
+                font-size: 14px;
+            }
+
+            .seal {
+                width: 80px;
+                height: 80px;
+                bottom: 50px;
+                right: 40px;
+            }
+
+            .navigation {
+                padding: 0 5px;
+            }
+
+            .nav-btn {
+                padding: 50px 10px;
+                font-size: 20px;
+            }
+
+            .bookmark-btn {
+                width: 50px;
+                height: 50px;
+                top: 25px;
+                right: 25px;
+                font-size: 24px;
+            }
+
+            .how-to-use-btn {
+                width: 50px;
+                height: 50px;
+                top: 85px;
+                right: 25px;
+                font-size: 24px;
+            }
+
+            .page-indicator-top {
+                bottom: 25px;
+                right: 25px;
+                font-size: 11px;
+                padding: 6px 12px;
+            }
+
+            .progress-indicator {
+                bottom: 25px;
+                right: 25px;
+                font-size: 11px;
+                padding: 6px 14px;
+            }
+
+            .page-bookmark-btn {
+                width: 35px;
+                height: 35px;
+                top: 15px;
+                right: 20px;
+                font-size: 18px;
+            }
+
+            .how-to-use-content,
+            .bookmarks-content {
+                width: 95%;
+                padding: 30px 25px;
+                max-height: 85vh;
+            }
+
+            .how-to-use-title,
+            .bookmarks-title {
+                font-size: 26px;
+                margin-bottom: 25px;
+            }
+
+            .how-to-use-section h3 {
+                font-size: 18px;
+            }
+
+            .how-to-use-section p,
+            .how-to-use-section ul {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .book {
+                width: 98vw;
+                min-height: 90vh;
+            }
+
+            .page {
+                padding: 50px 25px 50px 25px;
+            }
+
+            .cover-page {
+                padding: 20px 25px 180px 25px !important;
+            }
+
+            .tenet-header {
+                font-size: 22px;
+                margin-bottom: 20px;
+                padding-bottom: 12px;
+            }
+
+            .tenet-number {
+                font-size: 26px;
+            }
+
+            .tenet-content {
+                font-size: 17px;
+                line-height: 1.8;
+                margin-bottom: 20px;
+            }
+
+            .tenet-elaboration {
+                font-size: 15px;
+                line-height: 1.7;
+                padding: 18px;
+            }
+
+            .drop-cap {
+                font-size: 56px;
+                line-height: 48px;
+                padding-right: 10px;
+            }
+
+            .cover-page h1 {
+                font-size: 32px;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+            }
+
+            .cover-page .subtitle {
+                font-size: 18px;
+                letter-spacing: 1px;
+                margin-bottom: 35px;
+            }
+
+            .logo-container {
+                width: 110px;
+                height: 110px;
+                margin: 20px 0;
+            }
+
+            .logo-header {
+                width: 40px;
+                height: 40px;
+                top: 12px;
+                left: 25px;
+            }
+
+            .page-indicator {
+                top: 20px;
+                right: 25px;
+                font-size: 13px;
+                padding: 5px 10px;
+            }
+
+            .page-number {
+                bottom: 25px;
+                left: 25px;
+                font-size: 13px;
+            }
+
+            .seal {
+                width: 65px;
+                height: 65px;
+                bottom: 40px;
+                right: 25px;
+            }
+
+            .navigation {
+                padding: 0 3px;
+            }
+
+            .nav-btn {
+                padding: 40px 8px;
+                font-size: 18px;
+                border-width: 2px;
+            }
+
+            .bookmark-btn {
+                width: 45px;
+                height: 45px;
+                top: 20px;
+                right: 20px;
+                font-size: 22px;
+            }
+
+            .how-to-use-btn {
+                width: 45px;
+                height: 45px;
+                top: 75px;
+                right: 20px;
+                font-size: 22px;
+            }
+
+            .page-indicator-top {
+                bottom: 20px;
+                right: 20px;
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+
+            .progress-indicator {
+                bottom: 20px;
+                right: 20px;
+                font-size: 10px;
+                padding: 5px 12px;
+            }
+
+            .page-bookmark-btn {
+                width: 32px;
+                height: 32px;
+                top: 12px;
+                right: 18px;
+                font-size: 16px;
+            }
+
+            .how-to-use-content,
+            .bookmarks-content {
+                width: 98%;
+                padding: 25px 20px;
+                max-height: 90vh;
+            }
+
+            .how-to-use-title,
+            .bookmarks-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .how-to-use-section h3 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .how-to-use-section p,
+            .how-to-use-section ul {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            .how-to-use-section {
+                margin-bottom: 20px;
+            }
+
+            .close-modal-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .website-link a {
+                font-size: 16px;
+            }
+
+            .cover-ornament {
+                width: 150px;
+            }
+
+            .menu-btn {
+                width: 50px;
+                height: 50px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .menu-btn span {
+                width: 25px;
+                height: 2.5px;
+            }
+
+            .menu-content {
+                padding: 40px 30px;
+            }
+
+            .menu-title {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .menu-item {
+                padding: 15px 20px;
+                font-size: 16px;
+            }
+
+            .menu-item-number {
+                width: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS Logo">
+        </div>
+        <div class="loading-text">PREPARING THE MANUSCRIPT</div>
+        <div class="loading-dots"></div>
+    </div>
+
+    <!-- Entry Ritual Overlay -->
+    <div class="entry-ritual" id="entryRitual">
+        <div class="seal-container" id="sealContainer">
+            <div class="wax-seal">
+                <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS Seal" class="seal-emblem">
+            </div>
+            <div class="seal-cracks">
+                <div class="crack crack1"></div>
+                <div class="crack crack2"></div>
+                <div class="crack crack3"></div>
+            </div>
+        </div>
+        <h1 class="welcome-text">WELCOME, INITIATE</h1>
+        <p class="initiate-text">You have been granted access to the Sacred Tenets</p>
+        <button class="continue-btn" id="continueBtn">ENTER</button>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenuOnOverlay(event)">
+        <div class="menu-content">
+            <h2 class="menu-title">Sacred Contents</h2>
+            <div class="menu-items" id="menuItems">
+                <div class="menu-item" onclick="navigateToPage(0)">
+                    <span class="menu-item-number">⚜</span> Cover - The Vein Glory Society
+                </div>
+                <div class="menu-item" onclick="navigateToPage(1)">
+                    <span class="menu-item-number">I</span> Embrace Vanity as Self-Improvement
+                </div>
+                <div class="menu-item" onclick="navigateToPage(2)">
+                    <span class="menu-item-number">II</span> Balance Vanity with Virtue
+                </div>
+                <div class="menu-item" onclick="navigateToPage(3)">
+                    <span class="menu-item-number">III</span> Practice Stoic Resilience
+                </div>
+                <div class="menu-item" onclick="navigateToPage(4)">
+                    <span class="menu-item-number">IV</span> Live Authentically
+                </div>
+                <div class="menu-item" onclick="navigateToPage(5)">
+                    <span class="menu-item-number">V</span> Cultivate Inner Tranquility
+                </div>
+                <div class="menu-item" onclick="navigateToPage(6)">
+                    <span class="menu-item-number">VI</span> Practice Mindfulness & Self-Reflection
+                </div>
+                <div class="menu-item" onclick="navigateToPage(7)">
+                    <span class="menu-item-number">VII</span> Embrace Beauty in All Forms
+                </div>
+                <div class="menu-item" onclick="navigateToPage(8)">
+                    <span class="menu-item-number">VIII</span> Pursue Lifelong Learning & Growth
+                </div>
+                <div class="menu-item" onclick="navigateToPage(9)">
+                    <span class="menu-item-number">IX</span> Support Fellow Members
+                </div>
+                <div class="menu-item" onclick="navigateToPage(10)">
+                    <span class="menu-item-number">X</span> Strive for Excellence with Humility
+                </div>
+                <div class="menu-item" onclick="navigateToPage(11)">
+                    <span class="menu-item-number">⚜</span> Back Cover
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Quote Button -->
+    <button class="share-quote-btn" id="shareQuoteBtn">Share Quote</button>
+
+    <!-- Quote Modal -->
+    <div class="quote-modal" id="quoteModal">
+        <div class="quote-card-container">
+            <button class="close-modal-btn" onclick="closeQuoteModal()">×</button>
+            <div class="quote-card" id="quoteCard">
+                <div class="quote-card-logo">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="quote-card-ornament"></div>
+                <div class="quote-card-text" id="quoteCardText">""</div>
+                <div class="quote-card-ornament"></div>
+                <div class="quote-card-attribution" id="quoteCardAttribution">The Vein Glory Society</div>
+            </div>
+            <div class="quote-modal-buttons">
+                <button class="quote-modal-btn" onclick="copyQuoteToClipboard()">Copy Text</button>
+                <button class="quote-modal-btn" onclick="downloadQuoteCard()">Download Image</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Indicator (Fixed) -->
+    <div class="page-indicator-top" id="pageIndicatorTop" onclick="toggleMenu()" title="Open navigation menu">Page 1 of 12</div>
+
+    <!-- Bookmark Button (Fixed) -->
+    <div class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmarksModal()" title="View bookmarks">
+        📖
+    </div>
+
+    <!-- How to Use Button (Fixed) -->
+    <div class="how-to-use-btn" id="howToUseBtn" onclick="toggleHowToUseModal()" title="How to Use">
+        ❓
+    </div>
+
+    <!-- How to Use Modal -->
+    <div class="how-to-use-modal" id="howToUseModal" onclick="closeHowToUseOnOverlay(event)">
+        <div class="how-to-use-content">
+            <button class="close-modal-btn" onclick="toggleHowToUseModal()">×</button>
+            <h2 class="how-to-use-title">How to Use This Sacred Tome</h2>
+
+            <div class="how-to-use-section">
+                <h3>Navigation</h3>
+                <ul>
+                    <li>Use the <strong>◄</strong> and <strong>►</strong> buttons on the sides to turn pages</li>
+                    <li>Click the <strong>brown page indicator</strong> at the bottom right to open the navigation menu</li>
+                    <li>Use the hamburger menu at the top left to jump to any tenet</li>
+                </ul>
+            </div>
+
+            <div class="how-to-use-section">
+                <h3>Bookmarking</h3>
+                <ul>
+                    <li>Click the <strong>🔖</strong> icon in the top right of any tenet page to bookmark it</li>
+                    <li>Access all your bookmarks via the <strong>📖</strong> button at the top right</li>
+                    <li>Remove bookmarks by clicking the × next to them in the bookmarks list</li>
+                </ul>
+            </div>
+
+            <div class="how-to-use-section">
+                <h3>Sharing Wisdom</h3>
+                <ul>
+                    <li>Select any text to extract and share meaningful quotes</li>
+                    <li>Copy quotes to your clipboard or download them as beautiful images</li>
+                    <li>Share the tenets with fellow seekers of excellence</li>
+                </ul>
+            </div>
+
+            <div class="how-to-use-section">
+                <h3>Reading Experience</h3>
+                <ul>
+                    <li>Scroll within each page to read the complete elaborations</li>
+                    <li>The inline page indicator at the top shows which tenet you're reading</li>
+                    <li>Hover over page corners to see the page curl effect</li>
+                    <li>Click the <strong>logo on the back cover</strong> to visit The Vein Glory Society website</li>
+                </ul>
+            </div>
+
+            <div class="website-link">
+                <p style="font-family: 'EB Garamond', serif; font-size: 16px; color: #c9a961; margin-bottom: 15px;">
+                    For more wisdom and to join The Vein Glory Society:
+                </p>
+                <a href="https://www.bevein.org/" target="_blank" rel="noopener noreferrer">
+                    Visit www.bevein.org →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bookmarks Modal -->
+    <div class="bookmarks-modal" id="bookmarksModal" onclick="closeBookmarksOnOverlay(event)">
+        <div class="bookmarks-content">
+            <button class="close-modal-btn" onclick="toggleBookmarksModal()">×</button>
+            <h2 class="bookmarks-title">Bookmarked Pages</h2>
+            <div class="bookmarks-list" id="bookmarksList">
+                <div class="no-bookmarks">No bookmarks yet. Click the bookmark icon on any page to save it.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="book-container">
+        <div class="book">
+            <!-- Cover Page -->
+            <div class="page cover-page active" data-page="0">
+                <div class="logo-container">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="The Vein Glory Society Logo">
+                </div>
+                <h1>THE VEIN GLORY<br>SOCIETY</h1>
+                <div class="cover-ornament"></div>
+                <div class="subtitle">Sacred Tenets of Enlightenment</div>
+                <p style="text-align: center; font-size: 16px; margin-top: 20px; margin-bottom: 20px; color: #c9a961;">
+                    A Compendium of Self-Mastery<br>Through the Mirror's Truth
+                </p>
+                <div class="cover-ornament"></div>
+            </div>
+
+            <!-- Tenet 1 -->
+            <div class="page" data-page="1">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(1)" id="pageBookmark1" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet I • Page 2 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">I.</span> Thou Shalt Embrace Vanity as a Path to Self-Improvement.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">L</span>et vanity be thy guide towards personal growth and excellence, harnessing its power to shape the best version of thyself. The reflection thou seekest is not mere surface—it is the manifestation of thy inner will made visible to the world.
+                </div>
+                <div class="tenet-elaboration">
+                    In the pursuit of excellence, vanity becomes the compass that points toward thy highest self. What others dismiss as shallow pride, the enlightened recognize as the sacred flame of ambition. When thou gazest upon thy reflection with intent to improve, thou art not indulging in frivolous narcissism—thou art communing with thy potential. Each refinement of thy appearance, each moment spent in cultivation of thy image, is a meditation on what thou canst become. The world judges by what it sees; therefore, let what is seen be worthy of thy true nature. To reject vanity is to reject the tool by which thou art known. Embrace it, wield it, and let it forge thee into something undeniable.
+                </div>
+                <div class="page-number">1</div>
+            </div>
+
+            <!-- Tenet 2 -->
+            <div class="page" data-page="2">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(2)" id="pageBookmark2" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet II • Page 3 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">II.</span> Thou Shalt Balance Vanity with Virtue.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">H</span>onor virtues such as wisdom, courage, justice, and temperance alongside thy vanity, ensuring a harmonious equilibrium in all thy endeavors. For what use is a beautiful vessel if it holds nothing of substance?
+                </div>
+                <div class="tenet-elaboration">
+                    The Society does not advocate for hollowness adorned. True glory comes from the synthesis of external magnificence and internal fortitude. Vanity without virtue is but gilded emptiness—a mirror reflecting nothing. Wisdom tempers thy ambition, courage propels thy transformation, justice guides thy interactions, and temperance prevents thy descent into excess. These virtues do not diminish vanity; they elevate it from petty self-absorption to noble self-actualization. Let thy beauty be matched by thy mind, thy confidence by thy competence, thy pride by thy principles. Only then does vanity transcend its critics and become an instrument of genuine power. The balanced practitioner stands as both monument and meaning—admired not merely for what is seen, but revered for what is sensed beneath.
+                </div>
+                <div class="page-number">2</div>
+            </div>
+
+            <!-- Tenet 3 -->
+            <div class="page" data-page="3">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(3)" id="pageBookmark3" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet III • Page 4 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">III.</span> Thou Shalt Practice Stoic Resilience.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">C</span>ultivate resilience in adversity, focusing on what thou canst control and accepting with equanimity that which thou cannot. The storms of fortune shall not move thee; thou art anchored in thy own immovable center.
+                </div>
+                <div class="tenet-elaboration">
+                    Life's inevitable trials are not obstacles to thy glory—they are the crucible in which it is proven. The Stoic foundation of our philosophy demands that thou distinguish between the controllable and the uncontrollable, investing thy energy only in the former. External circumstances, the opinions of lesser minds, the fickleness of fate—these are beyond thy dominion. But thy reactions, thy discipline, thy commitment to excellence—these remain forever within thy power. When adversity strikes, let it find thee unmoved in thy core, bending perhaps in thy exterior but never breaking in thy essence. This resilience is not cold indifference; it is the warm certainty that thy worth is not determined by external validation but by internal sovereignty. Weather all storms with the knowledge that thou art greater than any temporary circumstance.
+                </div>
+                <div class="page-number">3</div>
+            </div>
+
+            <!-- Tenet 4 -->
+            <div class="page" data-page="4">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(4)" id="pageBookmark4" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet IV • Page 5 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">IV.</span> Thou Shalt Live Authentically.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">E</span>mbrace thine true self without fear or hesitation, rejecting societal norms that stifle individuality and authenticity. The greatest heresy is the denial of thy own nature in service to conformity.
+                </div>
+                <div class="tenet-elaboration">
+                    Authenticity is the bedrock upon which all glory is built. The Society recognizes that society itself often demands conformity, mediocrity, and the suppression of that which makes thee extraordinary. Resist this diminishment with every fiber of thy being. To live authentically is to refuse the comfortable lies that make others comfortable with thy smallness. It is to stand in thy truth even when that truth isolates thee, to express thy nature even when that nature disturbs the ordinary. The masses fear authenticity because it reminds them of their own cowardice; they will label thy genuineness as arrogance, thy self-assurance as delusion. Let them. Thy path is not to be understood by all—it is to be walked by thee. Authenticity is not performance; it is the elimination of all performance, the unveiling of thy essential self without apology or compromise.
+                </div>
+                <div class="page-number">4</div>
+            </div>
+
+            <!-- Tenet 5 -->
+            <div class="page" data-page="5">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(5)" id="pageBookmark5" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet V • Page 6 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">V.</span> Thou Shalt Cultivate Inner Tranquility.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">P</span>rioritize inner peace and tranquility, minimizing desires and anxieties that detract from thy serenity and contentment. In stillness lies the truest power.
+                </div>
+                <div class="tenet-elaboration">
+                    The pursuit of external glory must be matched by the cultivation of internal calm. Without this balance, vanity becomes frantic grasping, and confidence devolves into insecurity masked by bravado. True tranquility is not the absence of ambition—it is ambition freed from desperation. Cultivate the quiet center within thee from which all action flows without anxiety. Minimize those desires that arise from emptiness seeking to be filled, and recognize those that spring from wholeness seeking to express itself. The anxious mind cannot maintain glory; it sabotages itself through constant second-guessing and comparison. But the tranquil mind moves through the world like water—adapting without losing its nature, powerful without strain, reflecting beauty without needing to possess it. Inner peace is thy fortress; from this unshakeable center, all thy outer works proceed with grace and inevitability.
+                </div>
+                <div class="page-number">5</div>
+            </div>
+
+            <!-- Tenet 6 -->
+            <div class="page" data-page="6">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(6)" id="pageBookmark6" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet VI • Page 7 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">VI.</span> Thou Shalt Practice Mindfulness and Self-Reflection.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">E</span>ngage in regular mindfulness and self-reflection to gain insight into thy thoughts, emotions, and actions, fostering self-awareness and growth. Know thyself, for in that knowledge lies all mastery.
+                </div>
+                <div class="tenet-elaboration">
+                    Self-awareness is the foundation of all transformation. Without honest reflection, thou art merely reacting to life rather than authoring it. The Society demands regular communion with thy inner landscape—not in judgment, but in clarity. Observe thy thoughts as clouds passing through thy consciousness. Feel thy emotions without being consumed by them. Examine thy actions without the distortion of ego or the cruelty of self-flagellation. In this practice of mindful observation, patterns reveal themselves: the triggers that diminish thee, the habits that elevate thee, the beliefs that limit thee, the truths that liberate thee. Growth is impossible without this awareness. Thou cannot refine what thou dost not see, cannot master what thou dost not understand. Let reflection be thy daily ritual, more sacred than any outward ceremony. In the mirror of consciousness, find both thy flaws to be polished and thy strengths to be amplified.
+                </div>
+                <div class="page-number">6</div>
+            </div>
+
+            <!-- Tenet 7 -->
+            <div class="page" data-page="7">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(7)" id="pageBookmark7" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet VII • Page 8 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">VII.</span> Thou Shalt Embrace Beauty in All Forms.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">C</span>elebrate beauty in its myriad manifestations, appreciating and cultivating it within thyself and the world around thee. Beauty is not superficial—it is the visible form of truth.
+                </div>
+                <div class="tenet-elaboration">
+                    Beauty is often maligned by those who cannot create it or embody it, dismissed as shallow by those drowning in their own depth. But the Society recognizes beauty as a fundamental force of existence—not mere decoration, but the language through which excellence speaks. Beauty in form, in thought, in action, in creation—all are worthy of cultivation. When thou makest thyself beautiful, thou art not betraying substance for style; thou art giving substance its proper form. When thou surround thyself with beauty, thou art not engaging in frivolous aesthetics; thou art creating the environment in which thy highest self can flourish. Beauty disciplines: it demands attention, precision, care. Beauty inspires: it elevates mood, expands possibility, opens hearts. Beauty communicates: it conveys thy values without words, announces thy standards without proclamation. Do not apologize for thy appreciation of beauty or thy commitment to embodying it. The beautiful life is not the easy life—it is the examined life made visible.
+                </div>
+                <div class="page-number">7</div>
+            </div>
+
+            <!-- Tenet 8 -->
+            <div class="page" data-page="8">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(8)" id="pageBookmark8" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet VIII • Page 9 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">VIII.</span> Thou Shalt Pursue Lifelong Learning and Growth.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">C</span>ommit to continuous education and personal development, expanding thy knowledge and skills to achieve thy fullest potential. Stagnation is the only true death.
+                </div>
+                <div class="tenet-elaboration">
+                    The pursuit of glory is not a destination but an eternal journey of becoming. The moment thou believest thyself complete is the moment thy decline begins. The Society demands perpetual evolution—intellectually, physically, emotionally, spiritually. Each new skill acquired is another tool in thy arsenal. Each new idea integrated is another lens through which to perceive reality. Each new challenge undertaken is another opportunity to exceed thy previous limitations. This commitment to growth is not born of inadequacy but of abundance—the recognition that thy potential is inexhaustible, that there are always new heights to scale, new depths to plumb. Read voraciously. Study rigorously. Practice deliberately. Question constantly. Fail boldly and extract wisdom from each failure. Let others plateau in their comfortable competence; thou shalt always hunger for the next level of mastery. In lifelong learning lies lifelong vitality, and in lifelong vitality lies glory that does not fade with youth but deepens with time.
+                </div>
+                <div class="page-number">8</div>
+            </div>
+
+            <!-- Tenet 9 -->
+            <div class="page" data-page="9">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(9)" id="pageBookmark9" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet IX • Page 10 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">IX.</span> Thou Shalt Support Fellow Members on Their Journeys.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">E</span>xtend thy hand in support and encouragement to thy fellow members, respecting their autonomy while offering guidance and solidarity. In elevating others, thou art elevated.
+                </div>
+                <div class="tenet-elaboration">
+                    The Vein Glory Society is not a collection of isolated narcissists but a fellowship of the committed. Recognize that thy journey toward excellence is mirrored in the journeys of thy fellow adherents, and that there is no contradiction between personal glory and collective support. When thou assistest another in their transformation, thou reinforce thy own understanding. When thou celebrate another's achievement, thou expand thy own conception of what is possible. But let thy support be offered with respect for autonomy—offer wisdom, not control; encouragement, not dependence; challenge, not comfort. The greatest service thou canst render a fellow traveler is to hold them to their highest standard, to refuse to indulge their excuses, to see in them the potential they sometimes cannot see in themselves. Simultaneously, accept such service when offered to thee. Pride that refuses all help is not strength but brittleness. The strong support each other not because they are weak, but because they understand that excellence multiplied becomes unstoppable.
+                </div>
+                <div class="page-number">9</div>
+            </div>
+
+            <!-- Tenet 10 -->
+            <div class="page" data-page="10">
+                <div class="logo-header">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS">
+                </div>
+                <div class="page-bookmark-btn" onclick="togglePageBookmark(10)" id="pageBookmark10" title="Bookmark this page">🔖</div>
+                <div class="page-indicator-inline">Tenet X • Page 11 of 12</div>
+                <div class="tenet-header">
+                    <span class="tenet-number">X.</span> Thou Shalt Strive for Excellence with Humility.
+                </div>
+                <div class="tenet-content">
+                    <span class="drop-cap">P</span>ursue excellence in all thy endeavors with humility and grace, acknowledging that there is always room for growth and improvement. Confidence without humility is delusion.
+                </div>
+                <div class="tenet-elaboration">
+                    The final tenet reconciles what seems paradoxical: the marriage of supreme confidence with genuine humility. This is not the false modesty that disguises insecurity, nor is it the arrogance that masks incompetence. True humility is the recognition that excellence is infinite, that no matter thy achievements, there exist higher levels of mastery, deeper wells of wisdom. This knowledge does not diminish thy confidence—it focuses it. Thou art magnificent and yet capable of greater magnificence. Thou hast achieved much and yet have so much still to achieve. Let this dual awareness keep thee hungry without making thee desperate, proud without making thee closed. Excellence pursued with humility is sustainable; it neither burns out in manic perfectionism nor settles into complacent adequacy. It acknowledges thy current greatness while remaining open to thy potential greatness. In this balance lies the ultimate sophistication: to be simultaneously complete and becoming, to be both arrived and journeying, to embody glory while forever reaching for greater glory still.
+                </div>
+                <div class="page-number">10</div>
+                <div class="seal">
+                    <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="VGS Seal" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+                </div>
+            </div>
+
+            <!-- Back Cover -->
+            <div class="page cover-page" data-page="11">
+                <a href="https://www.bevein.org/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                    <div class="logo-container" style="width: 140px; height: 140px; margin-bottom: 20px; cursor: pointer;">
+                        <img src="https://static.wixstatic.com/media/c24a60_7d71da51215842fa96660ce19490c1fa~mv2.png" alt="The Vein Glory Society Logo">
+                    </div>
+                </a>
+                <div class="cover-ornament"></div>
+                <p style="text-align: center; font-size: 20px; color: #d4af37; font-style: italic; margin: 30px 0;">
+                    "In the mirror, thou shalt find not vanity,<br>
+                    but the truth of thy becoming."
+                </p>
+                <div class="cover-ornament"></div>
+                <p style="text-align: center; font-size: 14px; color: #c9a961; margin-top: 40px;">
+                    The Vein Glory Society<br>
+                    Est. In the Depths of Self-Reflection
+                </p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn" onclick="previousPage()">◄</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextPage()">►</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        const pages = document.querySelectorAll('.page');
+        const totalPages = pages.length;
+
+        // Loading Screen Logic
+        function initLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+
+            // Simulate loading time (minimum 1.5 seconds for effect)
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loadingScreen.classList.add('fade-out');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 800);
+                }, 1500);
+            });
+        }
+
+        // Initialize loading screen
+        initLoadingScreen();
+
+        // Entry Ritual Logic
+        function initEntryRitual() {
+            const hasVisited = localStorage.getItem('vgs_initiated');
+            const entryRitual = document.getElementById('entryRitual');
+            const continueBtn = document.getElementById('continueBtn');
+            const sealContainer = document.getElementById('sealContainer');
+
+            if (!entryRitual || !continueBtn || !sealContainer) {
+                console.error('Entry ritual elements not found');
+                return;
+            }
+
+            if (hasVisited) {
+                // Hide entry ritual immediately for returning visitors
+                entryRitual.style.display = 'none';
+            } else {
+                // Show entry ritual for first-time visitors
+                // Make sure it's visible
+                entryRitual.style.display = 'flex';
+
+                continueBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('Continue button clicked');
+
+                    // Trigger seal breaking animation
+                    sealContainer.classList.add('breaking');
+
+                    // Wait for animation to complete
+                    setTimeout(() => {
+                        entryRitual.classList.add('fade-out');
+                        localStorage.setItem('vgs_initiated', 'true');
+
+                        // Remove from DOM after fade
+                        setTimeout(() => {
+                            entryRitual.style.display = 'none';
+                        }, 1000);
+                    }, 1500);
+                });
+            }
+        }
+
+        // Initialize entry ritual on page load - use DOMContentLoaded for proper timing
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initEntryRitual);
+        } else {
+            // DOM already loaded
+            initEntryRitual();
+        }
+
+        // Quote Extraction System
+        let selectedQuoteText = '';
+        let selectedTenetName = '';
+
+        function initQuoteExtraction() {
+            const shareQuoteBtn = document.getElementById('shareQuoteBtn');
+            const quoteModal = document.getElementById('quoteModal');
+
+            document.addEventListener('mouseup', (e) => {
+                // Don't show button if clicking on navigation or menu
+                if (e.target.closest('.nav-btn') || e.target.closest('.menu-btn') || e.target.closest('.menu-overlay')) {
+                    return;
+                }
+
+                const selection = window.getSelection();
+                const selectedText = selection.toString().trim();
+
+                if (selectedText.length > 10) {
+                    selectedQuoteText = selectedText;
+
+                    // Get current tenet name
+                    const activePage = document.querySelector('.page.active');
+                    const pageNum = parseInt(activePage.getAttribute('data-page'));
+                    if (pageNum > 0 && pageNum < 11) {
+                        selectedTenetName = `Tenet ${toRomanNumeral(pageNum)}`;
+                    } else {
+                        selectedTenetName = 'The Vein Glory Society';
+                    }
+
+                    // Position button near selection
+                    const rect = selection.getRangeAt(0).getBoundingClientRect();
+                    shareQuoteBtn.style.top = `${rect.bottom + window.scrollY + 10}px`;
+                    shareQuoteBtn.style.left = `${rect.left + window.scrollX}px`;
+                    shareQuoteBtn.style.display = 'block';
+                } else {
+                    shareQuoteBtn.style.display = 'none';
+                }
+            });
+
+            shareQuoteBtn.addEventListener('click', () => {
+                openQuoteModal(selectedQuoteText, selectedTenetName);
+                shareQuoteBtn.style.display = 'none';
+            });
+
+            // Hide button when clicking elsewhere
+            document.addEventListener('mousedown', (e) => {
+                if (!e.target.closest('.share-quote-btn') && !e.target.closest('.quote-modal')) {
+                    shareQuoteBtn.style.display = 'none';
+                }
+            });
+        }
+
+        function toRomanNumeral(num) {
+            const romanNumerals = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+            return romanNumerals[num] || num.toString();
+        }
+
+        function openQuoteModal(text, attribution) {
+            const modal = document.getElementById('quoteModal');
+            const quoteText = document.getElementById('quoteCardText');
+            const quoteAttribution = document.getElementById('quoteCardAttribution');
+
+            quoteText.textContent = `"${text}"`;
+            quoteAttribution.textContent = attribution;
+
+            modal.classList.add('active');
+        }
+
+        function closeQuoteModal() {
+            const modal = document.getElementById('quoteModal');
+            modal.classList.remove('active');
+            window.getSelection().removeAllRanges();
+        }
+
+        function copyQuoteToClipboard() {
+            const text = `"${selectedQuoteText}"\n\n— ${selectedTenetName}, The Vein Glory Society`;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Quote copied to clipboard!');
+            });
+        }
+
+        async function downloadQuoteCard() {
+            const quoteCard = document.getElementById('quoteCard');
+
+            // Check if html2canvas is available
+            if (typeof html2canvas === 'undefined') {
+                alert('Image download feature is loading. Please try again in a moment, or use "Copy Text" to share the quote.');
+                return;
+            }
+
+            try {
+                // Generate image from quote card
+                const canvas = await html2canvas(quoteCard, {
+                    backgroundColor: null,
+                    scale: 2, // Higher quality
+                    logging: false
+                });
+
+                // Convert to blob and download
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = `vgs-quote-${selectedTenetName.replace(/\s+/g, '-').toLowerCase()}.png`;
+                    link.href = url;
+                    link.click();
+                    URL.revokeObjectURL(url);
+                });
+            } catch (error) {
+                console.error('Error generating image:', error);
+                alert('Could not generate image. Please try taking a screenshot instead, or use "Copy Text".');
+            }
+        }
+
+        // Initialize quote extraction
+        window.addEventListener('DOMContentLoaded', initQuoteExtraction);
+
+        // Bookmark System
+        let bookmarkedPages = new Set();
+
+        function initBookmarkSystem() {
+            // Load bookmarked pages from localStorage
+            const saved = localStorage.getItem('vgs_bookmarks');
+            if (saved) {
+                try {
+                    const bookmarksArray = JSON.parse(saved);
+                    bookmarkedPages = new Set(bookmarksArray);
+                } catch (e) {
+                    bookmarkedPages = new Set();
+                }
+            }
+            updateAllBookmarkButtons();
+        }
+
+        function togglePageBookmark(pageIndex) {
+            if (bookmarkedPages.has(pageIndex)) {
+                bookmarkedPages.delete(pageIndex);
+            } else {
+                bookmarkedPages.add(pageIndex);
+            }
+            saveBookmarks();
+            updateAllBookmarkButtons();
+            renderBookmarksList();
+        }
+
+        function saveBookmarks() {
+            const bookmarksArray = Array.from(bookmarkedPages);
+            localStorage.setItem('vgs_bookmarks', JSON.stringify(bookmarksArray));
+        }
+
+        function updateAllBookmarkButtons() {
+            // Update all page bookmark buttons
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.getElementById(`pageBookmark${i}`);
+                if (btn) {
+                    if (bookmarkedPages.has(i)) {
+                        btn.classList.add('bookmarked');
+                    } else {
+                        btn.classList.remove('bookmarked');
+                    }
+                }
+            }
+        }
+
+        function toggleBookmarksModal() {
+            const modal = document.getElementById('bookmarksModal');
+            modal.classList.toggle('active');
+            if (modal.classList.contains('active')) {
+                renderBookmarksList();
+            }
+        }
+
+        function closeBookmarksOnOverlay(event) {
+            if (event.target.id === 'bookmarksModal') {
+                toggleBookmarksModal();
+            }
+        }
+
+        // How to Use Modal Functions
+        function toggleHowToUseModal() {
+            const modal = document.getElementById('howToUseModal');
+            modal.classList.toggle('active');
+        }
+
+        function closeHowToUseOnOverlay(event) {
+            if (event.target.id === 'howToUseModal') {
+                toggleHowToUseModal();
+            }
+        }
+
+        function renderBookmarksList() {
+            const list = document.getElementById('bookmarksList');
+            const pageNames = [
+                '', 'Tenet I', 'Tenet II', 'Tenet III', 'Tenet IV', 'Tenet V',
+                'Tenet VI', 'Tenet VII', 'Tenet VIII', 'Tenet IX', 'Tenet X'
+            ];
+
+            if (bookmarkedPages.size === 0) {
+                list.innerHTML = '<div class="no-bookmarks">No bookmarks yet. Click the bookmark icon on any page to save it.</div>';
+                return;
+            }
+
+            const sortedBookmarks = Array.from(bookmarkedPages).sort((a, b) => a - b);
+            list.innerHTML = sortedBookmarks.map(pageIndex => `
+                <div class="bookmark-item" onclick="goToBookmarkedPage(${pageIndex})">
+                    <span>${pageNames[pageIndex]} • Page ${pageIndex + 1}</span>
+                    <button class="bookmark-remove" onclick="event.stopPropagation(); removeBookmark(${pageIndex})" title="Remove bookmark">×</button>
+                </div>
+            `).join('');
+        }
+
+        function goToBookmarkedPage(pageIndex) {
+            currentPage = pageIndex;
+            showPage(currentPage);
+            toggleBookmarksModal();
+        }
+
+        function removeBookmark(pageIndex) {
+            bookmarkedPages.delete(pageIndex);
+            saveBookmarks();
+            updateAllBookmarkButtons();
+            renderBookmarksList();
+        }
+
+        // Initialize bookmark system
+        window.addEventListener('DOMContentLoaded', initBookmarkSystem);
+
+        function showPage(pageIndex) {
+            pages.forEach((page, index) => {
+                if (index === pageIndex) {
+                    page.classList.add('active');
+                    page.style.display = 'flex';
+                    // Trigger reflow to ensure animation plays
+                    void page.offsetWidth;
+                    page.style.opacity = '1';
+                    page.style.zIndex = '10';
+                    // Scroll page content to top
+                    page.scrollTop = 0;
+                } else {
+                    page.classList.remove('active');
+                    setTimeout(() => {
+                        if (!page.classList.contains('active')) {
+                            page.style.display = 'none';
+                        }
+                    }, 800);
+                    page.style.opacity = '0';
+                    page.style.zIndex = '1';
+                }
+            });
+
+            // Update button states with visual feedback
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.disabled = pageIndex === 0;
+            nextBtn.disabled = pageIndex === totalPages - 1;
+
+            // Update button colors for cover pages (dark backgrounds)
+            const isCoverPage = pageIndex === 0 || pageIndex === 11;
+            if (isCoverPage) {
+                prevBtn.classList.add('light-mode');
+                nextBtn.classList.add('light-mode');
+            } else {
+                prevBtn.classList.remove('light-mode');
+                nextBtn.classList.remove('light-mode');
+            }
+
+            // Update progress indicator
+            updateProgressIndicator(pageIndex);
+
+            // Scroll window to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgressIndicator(pageIndex) {
+            const progressIndicator = document.getElementById('progressIndicator');
+            const pageIndicatorTop = document.getElementById('pageIndicatorTop');
+            const pageNames = [
+                'Cover',
+                'Tenet I',
+                'Tenet II',
+                'Tenet III',
+                'Tenet IV',
+                'Tenet V',
+                'Tenet VI',
+                'Tenet VII',
+                'Tenet VIII',
+                'Tenet IX',
+                'Tenet X',
+                'Back Cover'
+            ];
+            const indicatorText = `${pageNames[pageIndex]} • Page ${pageIndex + 1} of ${totalPages}`;
+            if (progressIndicator) progressIndicator.textContent = indicatorText;
+            if (pageIndicatorTop) pageIndicatorTop.textContent = indicatorText;
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Right') {
+                nextPage();
+            } else if (e.key === 'ArrowLeft' || e.key === 'Left') {
+                previousPage();
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const book = document.querySelector('.book');
+
+        book.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        book.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swiped left - go to next page
+                    nextPage();
+                } else {
+                    // Swiped right - go to previous page
+                    previousPage();
+                }
+            }
+        }
+
+        // Initialize
+        showPage(0);
+
+        // Prevent text selection during page turns for smoother UX
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+            });
+        });
+
+        // Menu functionality
+        function toggleMenu() {
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuBtn = document.getElementById('menuBtn');
+
+            menuOverlay.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+
+            // Update active page indicator in menu
+            if (menuOverlay.classList.contains('active')) {
+                updateMenuActiveState();
+            }
+        }
+
+        function closeMenuOnOverlay(event) {
+            // Close menu if clicking on overlay (not on menu content)
+            if (event.target.id === 'menuOverlay') {
+                toggleMenu();
+            }
+        }
+
+        function navigateToPage(pageIndex) {
+            currentPage = pageIndex;
+            showPage(currentPage);
+            toggleMenu(); // Close menu after navigation
+        }
+
+        function updateMenuActiveState() {
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach((item, index) => {
+                if (index === currentPage) {
+                    item.classList.add('active-page');
+                } else {
+                    item.classList.remove('active-page');
+                }
+            });
+        }
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const menuOverlay = document.getElementById('menuOverlay');
+                const menuBtn = document.getElementById('menuBtn');
+                if (menuOverlay.classList.contains('active')) {
+                    menuOverlay.classList.remove('active');
+                    menuBtn.classList.remove('active');
+                }
+            }
+        });
+
+        // Update menu when using regular navigation
+        const originalShowPage = showPage;
+        showPage = function(pageIndex) {
+            originalShowPage(pageIndex);
+            const menuOverlay = document.getElementById('menuOverlay');
+            if (menuOverlay.classList.contains('active')) {
+                updateMenuActiveState();
+            }
+        };
+    </script>
+</body>
+</html>
